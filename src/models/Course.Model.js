@@ -6,31 +6,31 @@ const courseSchema=mongoose.Schema({
       required:true,
       ref:'User'
    },
-   title{
+   title:{
       type: String,
       required: true
    },
-   description{
+   description:{
       type: String,
       required: true,
    }, 
-   price{
+   price:{
       type: String,
       required: true,
    }, 
-   duration{
+   duration:{
       type: String,
       required: true,
    }, 
-   category{
+   category:{
       type: String,
       required: true,
    }, 
-   instructorName{
+   instructorName:{
       type: String,
       required: true,
    }, 
-   courseImage{
+   courseImage:{
       type: String,
       required: true,
    }
