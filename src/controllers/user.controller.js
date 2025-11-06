@@ -50,10 +50,15 @@ export const login=async(req, res)=>{
    try {
       const {email,password}=req.body;
       const user=await User.findOne({email});
+      
+      if(!user){
+         return res.status(401).json({
+            message:'Invalid email or password',
+         })
+      }
+      const validPassword=await bcrypt.compare(password,user.password);
 
-      const matchedPassword=await bcrypt.compare(password,'user.password');
-
-      if(user===matchedPassword){
+      if(validPassword){
 
          generateToken(res , user._id);
          return res.status(200).json({
@@ -77,3 +82,4 @@ export const login=async(req, res)=>{
       })
    }
 }
+
