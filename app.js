@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors'
 import hpp from 'hpp';
-import cookieParser from 'cookie-parser';
-import rateLimit from 'express-rate-limit';
-import connectDB from './src/config/database.config.js';
-import routeNotFound from './src/middlewares/route_not_found.middleware.js';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import rateLimit from 'express-rate-limit';
+
+import connectDB from './src/config/database.config.js';
+import routeNotFound from './src/middlewares/route_not_found.middleware.js';
+
 
 
 dotenv.config();
