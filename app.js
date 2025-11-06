@@ -8,6 +8,7 @@ import rateLimit from 'express-rate-limit';
 
 import connectDB from './src/config/database.config.js';
 import routeNotFound from './src/middlewares/route_not_found.middleware.js';
+import router from './src/routes/user.routes.js';
 
 
 
@@ -29,9 +30,9 @@ app.use(rateLimiter);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-connectDB()
+connectDB();
 
-
+app.use('/api/v1/course_management',router);
 app.use(routeNotFound);
 
 export default app;

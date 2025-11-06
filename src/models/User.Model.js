@@ -14,7 +14,7 @@ const userSchema=mongoose.Schema({
       type:String,
       required:true,
    },
-   phone_Number:{
+   phoneNumber:{
       type:String,
       required:true,
    }

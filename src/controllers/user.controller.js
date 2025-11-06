@@ -1,5 +1,6 @@
 import User from '../models/User.Model.js';
 import generateToken from '../utils/generate_token.utils.js';
+import bcrypt from 'bcryptjs';
 
 export const register=async(req ,res)=>{
    try {
@@ -13,23 +14,25 @@ export const register=async(req ,res)=>{
          })
       }
 
+      const hashedPassword=await bcrypt.hash(password,10);
+
       const user=await User.create({
          name,
          email,
-         password,
+         password:hashedPassword,
          phoneNumber
       });
 
       if(user){
+
          generateToken(res,user._id);
-         register.status(201).json({
-            _id:user._id,
-            name:user.name,
-            email:user.email,
-            phoneNumber:user.phoneNumber
+         return res.status(201).json({
+            message:'User registration successfully',
+            data:user
          })
+
       } else{
-         res.status(400),json({
+         return res.status(400).json({
             message:"Invalid user data"
          })
       }
@@ -38,7 +41,7 @@ export const register=async(req ,res)=>{
    } catch (error) {
       res.status(500).json({
          message:"Server error occur during registration",
-         error:error
+         error:error.message
       })
    }
 }
