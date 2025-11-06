@@ -9,7 +9,7 @@ export const register=async(req ,res)=>{
       const userExists=await User.findOne({email});
       
       if(userExists){
-         res.status(400).json({
+         return res.status(400).json({
             message:"User already exists",
          })
       }
@@ -22,10 +22,11 @@ export const register=async(req ,res)=>{
          password:hashedPassword,
          phoneNumber
       });
+      console.log('Newly registered user ID:', user._id); // ← ekhane add koro
 
       if(user){
 
-         generateToken(res,user._id);
+         const token=generateToken(res,user._id);
          return res.status(201).json({
             message:'User registration successfully',
             data:user
@@ -56,19 +57,20 @@ export const login=async(req, res)=>{
             message:'Invalid email or password',
          })
       }
-      
-      const validPassword=await bcrypt.compare(password,user.password,10);
+      const validPassword=await bcrypt.compare(password,user.password);
 
       if(validPassword){
 
-         generateToken(res , user._id);
+         const token=generateToken(res , user._id);
          return res.status(200).json({
             message:'User login successfully',
             data:{
                _id:user._id,
                name:user.name,
                email:user.email,
-            }
+               token:token
+            },
+            // token:token
          })
       }else{
          return res.status(401).json({
