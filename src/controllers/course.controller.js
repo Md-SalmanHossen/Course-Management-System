@@ -35,3 +35,27 @@ export const createCourse=async(req ,res)=>{
       })
    }
 }
+
+export const getCourseById=async(req ,res)=>{
+   try {
+
+      const course =await Course.findById(req.params.id);
+      
+      if(!course){
+         return res.status(404).json({
+            message:'Course not found',
+         })
+      }
+
+      res.status(200).json({
+         message:"Course fetched successfully",
+         data:course
+      });
+
+   } catch (error) {
+      res.status(500).json({
+         message:"Server error during fetched all course",
+         error:error.message
+      })
+   }
+}
