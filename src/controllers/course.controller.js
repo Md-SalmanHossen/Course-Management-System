@@ -64,7 +64,6 @@ export const updateCourse=async(req ,res)=>{
    try {
 
       const id=req.params.id;
-   //const {id}=req.params;
       const course=await Course.findById(id);
 
       if(course.user.toString()!==req.user._id.toString()){
@@ -82,9 +81,11 @@ export const updateCourse=async(req ,res)=>{
       course.courseImage=req.body.courseImage||course.courseImage;
 
       const updateCourse=await course.save();
+      console.log('Course updated by: ',req.user._id);
+
       res.status(200).json({
          message:"Course update successfully",
-         updated_data:updateCourse;
+         updated_data:updateCourse,
       })
 
    } catch (error) {
@@ -98,8 +99,7 @@ export const updateCourse=async(req ,res)=>{
 export const deleteCourse=async(req ,res)=>{
    try {
       
-      //const {id}=req.params;
-      const id=req.id.params;// which one is better
+      const id=req.params.id;
       const course=await Course.findById(id);
       
       if(!course){
