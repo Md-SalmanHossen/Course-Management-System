@@ -9,6 +9,6 @@ router.post('/register',user.register);
 router.post('/login',user.login);
 
 router.put('/profile',authMiddleware,user.updateProfile);
-
+router.get('/profile',authMiddleware,user.getUserProfile);
 
 export default router;

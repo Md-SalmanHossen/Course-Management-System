@@ -22,7 +22,7 @@ export const register=async(req ,res)=>{
          password:hashedPassword,
          phoneNumber
       });
-      console.log('Newly registered user ID:', user._id); // ← ekhane add koro
+      //console.log('Newly registered user ID:', user._id); // ← ekhane add koro
 
       if(user){
 
@@ -86,6 +86,28 @@ export const login=async(req, res)=>{
    }
 }
 
+export const getUserProfile=async(req ,res)=>{
+   try {
+      const user=await User.findById(req.user._id).select('-password');
+      
+      if(!user){
+         return res.status(404).json({
+            message:"User not found from token"
+         })
+      }
+      res.status(200).json({
+         message:'User profile fetched successfully',
+         data:user,
+      });
+
+   } catch (error) {
+      res.status(500).json({
+         message:"Server error during get profile",
+         error:error.message
+      })
+   }
+}
+
 export const updateProfile=async(req , res)=>{
    try {
       const user=await User.findById(req.user._id);
@@ -139,4 +161,6 @@ export const updateProfile=async(req , res)=>{
       })
    }
 }
+
+
 
