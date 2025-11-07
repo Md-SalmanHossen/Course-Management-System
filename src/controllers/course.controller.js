@@ -61,7 +61,38 @@ export const getCourseById=async(req ,res)=>{
 }
 
 export const updateCourse=async(req ,res)=>{
+   try {
 
+      const id=req.params.id;
+   //const {id}=req.params;
+      const course=await Course.findById(id);
+
+      if(course.user.toString()!==req.user._id.toString()){
+         return res.status(401).json({
+            message:'Not authorized to update this course'
+         })
+      };
+
+      course.title=req.body.title||course.title;
+      course.description=req.body.description||course.description;
+      course.price=req.body.price||course.price;
+      course.duration=req.body.duration||course.duration;
+      course.category=req.body.category||course.category;
+      course.instructorName=req.body.instructorName||course.instructorName;
+      course.courseImage=req.body.courseImage||course.courseImage;
+
+      const updateCourse=await course.save();
+      res.status(200).json({
+         message:"Course update successfully",
+         updated_data:updateCourse;
+      })
+
+   } catch (error) {
+      res.status(500).json({
+         message:'Server error during update course',
+         error:error.message
+      });
+   }
 }
 
 export const deleteCourse=async(req ,res)=>{
