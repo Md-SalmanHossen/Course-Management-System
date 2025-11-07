@@ -8,9 +8,10 @@ import rateLimit from 'express-rate-limit';
 
 import connectDB from './src/config/database.config.js';
 import routeNotFound from './src/middlewares/route_not_found.middleware.js';
-import router from './src/routes/user.routes.js';
 import errorHandler from './src/middlewares/error.middleware.js';
 
+import userRoutes from './src/routes/user.routes.js';
+import courseRoutes from './src/routes/course.routes.js'
 
 
 dotenv.config();
@@ -33,8 +34,13 @@ app.use(express.urlencoded({extended:true}));
 
 connectDB();
 
-app.use('/api/v1/course_management',router);
+app.use('/api/v1/users',userRoutes);
+app.use('/api/v1/course',courseRoutes);
+
+
 app.use(routeNotFound);
 app.use(errorHandler);
+
+
 
 export default app;
