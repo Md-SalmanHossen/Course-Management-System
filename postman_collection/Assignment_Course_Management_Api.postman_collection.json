@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "e207f8e3-5975-4b75-ab27-d6d1fc067537",
+		"name": "Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38345690"
+	},
+	"item": [
+		{
+			"name": "Course Management System",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Salman4\",\r\n  \"email\": \"salman4@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"phoneNumber\": \"01700000004\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"salman4@gmail.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Salman Hossen\",\r\n  \"email\": \"salman123@example.com\",\r\n  \"phoneNumber\": \"017xxxxxxxx\",\r\n  \"password\": \"new1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Salman Hossen\",\r\n  \"email\": \"salman123@example.com\",\r\n  \"phoneNumber\": \"017xxxxxxxx\",\r\n  \"password\": \"new1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"React.js and Next.js Masterclass\",\r\n  \"description\": \"Learn Express from scratch\",\r\n  \"price\": 1000,\r\n  \"duration\": \"10 weeks\",\r\n  \"category\": \"Web Development\",\r\n  \"instructorName\": \"Salman Hossen\",\r\n  \"courseImage\": \"https://i.ibb.co.com/SFTHcB7/react.png\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/course/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/course/690d8c13ba3ba7912233903c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"690d8c13ba3ba7912233903c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"JavaScript Basics\",\r\n  \"description\": \"Learn JS from scratch\",\r\n  \"price\": 499,\r\n  \"duration\": \"3 weeks\",\r\n  \"category\": \"Programming\",\r\n  \"instructorName\": \"Salman\",\r\n  \"courseImage\": \"https://example.com/img.png\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/course/690d8c13ba3ba7912233903c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"690d8c13ba3ba7912233903c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete course",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTBjYjU2YjY5NTJlYTJjZmQ4Nzc4ZTMiLCJpYXQiOjE3NjI0NDA1NjcsImV4cCI6MTc2NTAzMjU2N30.XzWAofmA1AqgbkUUu7Z_Q-_C2jFHpZktC7LJUYkeJKY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/course/690d89a2ba3ba79122339036",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"690d89a2ba3ba79122339036"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
