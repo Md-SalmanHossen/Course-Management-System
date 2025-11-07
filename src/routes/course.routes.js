@@ -4,9 +4,9 @@ import *as course from '../controllers/course.controller.js';
 
 const router=express.Router();
 
-router.post('/profile',authMiddleware,course.createCourse);
-router.get('/profile/:id',authMiddleware,course.getCourseById);
-router.put('/profile',authMiddleware,course.updateCourse);
-router.delete('/profile',authMiddleware,course.deleteCourse);
+router.post('/',authMiddleware,course.createCourse);
+router.get('/:id',authMiddleware,course.getCourseById);
+router.put('/:id',authMiddleware,course.updateCourse);
+router.delete('/:id',authMiddleware,course.deleteCourse);
 
 export default router;

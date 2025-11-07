@@ -66,6 +66,12 @@ export const updateCourse=async(req ,res)=>{
       const id=req.params.id;
       const course=await Course.findById(id);
 
+      if(!course){
+         return res.status(404).json({
+            message:'Course not found'
+         })
+      }
+
       if(course.user.toString()!==req.user._id.toString()){
          return res.status(401).json({
             message:'Not authorized to update this course'
@@ -100,6 +106,10 @@ export const deleteCourse=async(req ,res)=>{
    try {
       
       const id=req.params.id;
+      if (!id || id.length !== 24) {
+         return res.status(400).json({ message: "Invalid course ID format" });
+      }
+
       const course=await Course.findById(id);
       
       if(!course){
@@ -117,7 +127,8 @@ export const deleteCourse=async(req ,res)=>{
       const deleteCourse=await course.deleteOne();
       res.status(200).json({
          message:'Course deleted successfully',
-         deleted_data:deleteCourse
+         deleted_data:course,
+         deleteCourse
       });
 
    } catch (error) {
