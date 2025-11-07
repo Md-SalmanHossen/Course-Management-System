@@ -59,3 +59,40 @@ export const getCourseById=async(req ,res)=>{
       })
    }
 }
+
+export const updateCourse=async(req ,res)=>{
+
+}
+
+export const deleteCourse=async(req ,res)=>{
+   try {
+      
+      //const {id}=req.params;
+      const id=req.id.params;// which one is better
+      const course=await Course.findById(id);
+      
+      if(!course){
+         return res.status(404).json({
+            message:'Course not found'
+         });
+      }
+
+      if(course.user.toString()!==req.user._id.toString()){
+         return res.status(401).json({
+            message:'Not authorized to delete this course',
+         })
+      }
+
+      const deleteCourse=await course.deleteOne();
+      res.status(200).json({
+         message:'Course deleted successfully',
+         deleted_data:deleteCourse
+      });
+
+   } catch (error) {
+      res.status(500).json({
+         message:'Server error during delete course',
+         error:error.message
+      })
+   }
+}
