@@ -32,11 +32,11 @@ export const register=async(req ,res)=>{
             data:user
          })
 
-      } else{
-         return res.status(400).json({
-            message:"Invalid user data"
-         })
       }
+      res.status(400).json({
+         message:"Invalid user data"
+      })
+      
 
 
    } catch (error) {
@@ -70,7 +70,6 @@ export const login=async(req, res)=>{
                email:user.email,
                token:token
             },
-            // token:token
          })
       }else{
          return res.status(401).json({
@@ -144,7 +143,7 @@ export const updateProfile=async(req , res)=>{
       }
       const updateUser=await user.save();
 
-      return res.status(200).json({
+      res.status(200).json({
          message:"User updated successfully",
          data:{
             _id:updateUser._id,
